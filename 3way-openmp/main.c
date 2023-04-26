@@ -21,20 +21,20 @@ int findMaxValue(char* line, int nchars) {
 }
 
 int main() {
-    int nlines = 0, maxlines = 100;
+    const int maxlines = 100;
+    int nlines = 0;
     int i, err;
-    int nchars = 0;
     FILE *fd;
     char *line = (char*)malloc(2001); // no lines larger than 2000 chars
 
     // Read in the lines from the data file
     fd = fopen("/homes/dan/625/wiki_dump.txt", "r");
 
-    #pragma omp parallel for default(none) shared(fd, line, maxlines) private(i, err, nchars)
+    #pragma omp parallel for shared(fd, line, maxlines) private(i, err, nchars)
     for (i = 0; i < maxlines; i++) {
         err = fscanf(fd, "%[^\n]\n", line);
         if (err == EOF) break;
-        nchars = strlen(line);
+        int nchars = strlen(line);
         int max_val = findMaxValue(line, nchars);
 
         #pragma omp critical
@@ -44,7 +44,7 @@ int main() {
             nlines++;
         }
     }
-
+    free(line);
     fclose(fd);
     return 0;
 }

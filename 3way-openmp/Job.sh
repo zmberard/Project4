@@ -1,5 +1,4 @@
-#!/bin/bash
+#!/bin/bash -l
+##$ -l h_rt=0:00:01             # ask for 1 minute runtime
 
-module load foss
-
-mpicc -o myOpenMP.x main.c
+/homes/khouryethan/Project4/3way-openmp/openMP
