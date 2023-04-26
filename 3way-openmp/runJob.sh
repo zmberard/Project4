@@ -1,2 +1,2 @@
-#!/bin/bash
-sbatch --mem=4G --time=03:00:00 --job-name=openMP --ntasks=40 Job.sh
+#!/bin/sh
+sbatch --mem=4G --time=03:00:00 --constraint=moles --job-name=openMP --nodes=10 --ntasks-per-node=4 main.c

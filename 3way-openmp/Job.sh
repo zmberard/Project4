@@ -1,3 +1,5 @@
 #!/bin/bash
 
-/homes/khouryethan/Project4/3way-openmp/main.c
+module load foss
+
+mpicc -o myOpenMP.x main.c
