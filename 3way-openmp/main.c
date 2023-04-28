@@ -21,7 +21,7 @@ int findMaxValue(char* line, int nchars) {
 }
 
 int main() {
-    const int maxlines = 100;
+    const int maxlines = 1000000;
     int nlines = 0;
     int i, err, nchars;
     FILE *fd;
