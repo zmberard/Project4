@@ -61,14 +61,14 @@ int main() {
     int myVersion = 1;
     
     // Memory
-    processMem_t afterRead;
+    //processMem_t afterRead; //Not sure if I want to keep, peak is after comp
     processMem_t afterComp;
     
 
     
     //Program variables
     const int maxlines = 1000000;
-    const int chunk_size = 1000;
+    //const int chunk_size = 1000;
     int nlines = 0;
     int i, nchars;
     FILE *fd;
@@ -98,7 +98,7 @@ int main() {
     free(line);
     fclose(fd);
     
-     GetProcessMemory(&afterRead);
+     //GetProcessMemory(&afterRead);
 
     #pragma omp parallel for private(i, nchars) schedule(static)
     for (i = 0; i < nlines; i++) {
@@ -126,9 +126,9 @@ int main() {
     
     elapsedTime = (t2.tv_sec - t1.tv_sec) * 1000.0; //sec to ms
 	elapsedTime += (t2.tv_usec - t1.tv_usec) / 1000.0; // us to ms
-	printf("DATA, %d, %s, %f\n", myVersion, getenv("SLURM_NTASKS"),  elapsedTime);
-	printf("After Read Memory: vMem %u KB, pMem %u KB\n", afterRead.virtualMem, afterRead.physicalMem);
-	printf("After Computation Memory: vMem %u KB, pMem %u KB\n", afterComp.virtualMem, afterComp.physicalMem);
+	printf("DATATIME(ms), %d, %s, %f\n", myVersion, getenv("SLURM_NTASKS"),  elapsedTime);
+	//printf("DATAREADMEM(vMemKB)(pMemKB), %u, %u\n", afterRead.virtualMem, afterRead.physicalMem);
+	printf("DATACOMPMEM(vMemKB)(pMemKB), %s, %u, %u\n", getenv("SLURM_NTASKS"), afterComp.virtualMem, afterComp.physicalMem);
     
     return 0;
 }
