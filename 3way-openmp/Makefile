@@ -1,2 +1,2 @@
-main: main.c
-	gcc -pg -fopenmp main.c -o main
+main: openmp.c
+	gcc -pg -fopenmp openmp.c -o openmp

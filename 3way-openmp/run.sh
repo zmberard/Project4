@@ -6,4 +6,4 @@
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 
-/homes/jonahmbog/cis520/Project4/3way-openmp/main
+/homes/jonahmbog/cis520/Project4/3way-openmp/openmp
