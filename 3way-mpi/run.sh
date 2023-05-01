@@ -2,7 +2,7 @@
 #SBATCH --mem=4G
 #SBATCH --time=00:30:00
 #SBATCH --constraint=elves
-#SBATCH --job-name=pthread
+#SBATCH --job-name=mpi
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=4
 
